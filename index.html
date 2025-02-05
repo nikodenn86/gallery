@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полароид Камера</title>
+    <link rel="stylesheet" href="polaroid.css">
+</head>
+<body>
+
+    <!-- Верхняя верёвка с фото -->
+    <div class="photo-string top-string">
+        <div class="rope"></div>
+        <div class="hanging-photo"><img src="images/photo1.jpg" alt="Фото 1"></div>
+        <div class="hanging-photo"><img src="images/photo2.jpg" alt="Фото 2"></div>
+        <div class="hanging-photo"><img src="images/photo3.jpg" alt="Фото 3"></div>
+        <div class="hanging-photo"><img src="images/photo4.jpg" alt="Фото 4"></div>
+    </div>
+
+    <!-- Полароид камера -->
+    <div class="container">
+        <div class="polaroid-camera">
+            <div class="lens"></div>
+            <button class="shutter-button" onclick="takePhoto()"></button>
+        </div>
+
+        <button id="photo-button">📸 Сделать фото</button>
+
+        <!-- Фото, выходящее из камеры -->
+        <div class="photo-container">
+            <div class="photo" id="photo">
+                <img src="images/photo1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижняя верёвка с фото -->
+    <div class="photo-string bottom-string">
+        <div class="rope"></div>
+        <div class="hanging-photo"><img src="images/photo5.jpg" alt="Фото 5"></div>
+        <div class="hanging-photo"><img src="images/photo6.jpg" alt="Фото 6"></div>
+        <div class="hanging-photo"><img src="images/photo7.jpg" alt="Фото 7"></div>
+        <div class="hanging-photo"><img src="images/photo8.jpg" alt="Фото 8"></div>
+    </div>
+
+    <script src="polaroid.js"></script>
+</body>
+</html>
