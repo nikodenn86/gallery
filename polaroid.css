@@ -1,0 +1,225 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #e3e3e3, #cfcfcf);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Верхняя и нижняя верёвки */
+.photo-string {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    padding: 10px 0;
+}
+
+/* Верхняя верёвка */
+.top-string {
+    top: 50px;
+}
+
+/* Нижняя верёвка */
+.bottom-string {
+    bottom: 1px;
+}
+
+/* Верёвка */
+.rope {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #8b4513;
+    top: 10px;
+}
+
+/* Висячие фото */
+.hanging-photo {
+    width: 130px; /* Увеличил размер фото */
+    height: 170px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform-origin: top;
+    animation: sway 4s infinite ease-in-out alternate;
+    position: relative;
+}
+
+/* Фото внутри */
+.hanging-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 5px solid white;
+}
+
+/* Прищепка */
+.hanging-photo::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 18px;
+    height: 30px;
+    background: brown;
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+/* Анимация покачивания фото */
+@keyframes sway {
+    0% {
+        transform: rotate(-4deg);
+    }
+    100% {
+        transform: rotate(4deg);
+    }
+}
+
+/* Полароид-камера */
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* Камера */
+.polaroid-camera {
+    position: relative;
+    width: 300px;
+    height: 380px;
+    background: linear-gradient(to bottom, #f2f2f2, #d9d9d9);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    border: 2px solid #b0b0b0;
+}
+
+/* Объектив */
+.lens {
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, #444 20%, #000);
+    border-radius: 50%;
+    border: 5px solid #222;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), 
+                0 0 15px rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
+    position: relative;
+}
+
+.lens::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+/* Кнопка спуска */
+.shutter-button {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to top, red, darkred);
+    border-radius: 50%;
+    border: 2px solid #a00000;
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+.shutter-button:active {
+    transform: scale(0.9);
+}
+/* Контейнер для фото */
+/* Контейнер для фото */
+.photo-container {
+    position: absolute;
+    top: 40px; /* Начальная позиция под слотом камеры */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Чтобы фото не выходило за границы */
+    z-index: -1;
+    transition: top 2s ease-in-out;
+}
+
+/* Фото */
+.photo {
+    width: 100%; /* Заполняет контейнер */
+    height: 100%; /* Заполняет контейнер */
+    object-fit: cover; /* Фото корректно вписывается */
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Слот для фото */
+.photo-slot {
+    position: absolute;
+    bottom: 40px; /* Поднял слот выше */
+    width: 190px; /* Сделал шире */
+    height: 30px; /* Увеличил высоту */
+    background: #111; /* Сделал темнее */
+    border-radius: 5px;
+    border: 4px solid #222; /* Добавил контраст */
+    box-shadow: inset 0 -3px 7px rgba(255, 255, 255, 0.3), 
+                0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Класс, который активирует анимацию */
+/* Анимация выезда фото */
+.show-photo {
+    top: -180px; /* Фото поднимается, но не обрезается */
+    z-index: 1; /* Фото становится видимым */
+}
+
+.show-photo .photo {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Кнопка съемки */
+#photo-button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Эффект при наведении */
+#photo-button:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
+    transform: scale(1.05);
+}
+
+/* Эффект нажатия */
+#photo-button:active {
+    transform: scale(0.95);
+}
